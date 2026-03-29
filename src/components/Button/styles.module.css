@@ -9,16 +9,14 @@
   font-family: var(--font-body);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
+  -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
-  transition:
-    transform var(--transition-fast),
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    box-shadow var(--transition-fast),
+  transition: transform var(--transition-fast),
+    background-color var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast), box-shadow var(--transition-fast),
     opacity var(--transition-fast);
 }
 
@@ -41,16 +39,14 @@
   background-color: var(--color-brand-default);
   border-color: var(--color-brand-default);
   color: var(--color-text-inverse);
-  box-shadow:
-    inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.16),
+  box-shadow: inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.16),
     var(--shadow-sm);
 }
 
 .primary:hover:not(:disabled) {
   background-color: var(--color-brand-hover);
   border-color: var(--color-brand-hover);
-  box-shadow:
-    inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.2),
+  box-shadow: inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.2),
     var(--shadow-md);
   transform: translateY(calc(var(--space-1) * -0.25));
 }
@@ -58,8 +54,7 @@
 .primary:active:not(:disabled) {
   background-color: var(--color-brand-active);
   border-color: var(--color-brand-active);
-  box-shadow:
-    inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.1),
+  box-shadow: inset 0 calc(var(--space-1) * 0.25) 0 rgb(255 255 255 / 0.1),
     var(--shadow-sm);
 }
 
@@ -70,21 +65,13 @@
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: color-mix(
-    in oklab,
-    var(--color-brand-default) 10%,
-    transparent
-  );
+  background-color: var(--color-brand-100);
   border-color: var(--color-brand-hover);
   color: var(--color-brand-hover);
 }
 
 .secondary:active:not(:disabled) {
-  background-color: color-mix(
-    in oklab,
-    var(--color-brand-default) 16%,
-    transparent
-  );
+  background-color: var(--color-brand-200);
   border-color: var(--color-brand-active);
   color: var(--color-brand-active);
 }
@@ -96,20 +83,12 @@
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: color-mix(
-    in oklab,
-    var(--color-brand-default) 12%,
-    transparent
-  );
+  background-color: var(--color-brand-100);
   color: var(--color-brand-hover);
 }
 
 .ghost:active:not(:disabled) {
-  background-color: color-mix(
-    in oklab,
-    var(--color-brand-default) 16%,
-    transparent
-  );
+  background-color: var(--color-brand-200);
   color: var(--color-brand-active);
 }
 
@@ -223,4 +202,3 @@
     transform: rotate(360deg);
   }
 }
-

@@ -45,28 +45,53 @@ export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>(
           <span className={styles.label}>{label}</span>
         ) : null}
 
-        <button
-          ref={ref}
-          type="button"
-          role="switch"
-          aria-checked={checked}
-          aria-label={ariaLabel ?? label ?? "Toggle"}
-          className={cn(styles.track, styles[size], checked && styles.checked)}
-          disabled={disabled}
-          onClick={toggle}
-          onKeyDown={(event) => {
-            if (event.key === " " || event.key === "Enter") {
-              event.preventDefault();
-              toggle();
-            }
-          }}
-        >
-          <motion.span
-            className={styles.thumb}
-            animate={{ x: checked ? thumbOffsetMap[size] : 0 }}
-            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          />
-        </button>
+        {checked ? (
+          <button
+            ref={ref}
+            type="button"
+            role="switch"
+            aria-checked="true"
+            aria-label={ariaLabel ?? label ?? "Toggle"}
+            className={cn(styles.track, styles[size], styles.checked)}
+            disabled={disabled}
+            onClick={toggle}
+            onKeyDown={(event) => {
+              if (event.key === " " || event.key === "Enter") {
+                event.preventDefault();
+                toggle();
+              }
+            }}
+          >
+            <motion.span
+              className={styles.thumb}
+              animate={{ x: thumbOffsetMap[size] }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            />
+          </button>
+        ) : (
+          <button
+            ref={ref}
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label={ariaLabel ?? label ?? "Toggle"}
+            className={cn(styles.track, styles[size])}
+            disabled={disabled}
+            onClick={toggle}
+            onKeyDown={(event) => {
+              if (event.key === " " || event.key === "Enter") {
+                event.preventDefault();
+                toggle();
+              }
+            }}
+          >
+            <motion.span
+              className={styles.thumb}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            />
+          </button>
+        )}
 
         {label && labelPosition === "right" ? (
           <span className={styles.label}>{label}</span>

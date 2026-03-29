@@ -34,7 +34,7 @@
 }
 
 .removeButton:hover {
-  background-color: color-mix(in srgb, currentColor 14%, transparent);
+  background-color: var(--color-bg-secondary);
 }
 
 .removeButton:focus-visible {
@@ -66,58 +66,26 @@
 }
 
 .success {
-  background-color: color-mix(
-    in srgb,
-    var(--color-success-400) 16%,
-    var(--color-bg-primary)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--color-success-600) 35%,
-    var(--color-bg-primary)
-  );
-  color: var(--color-success-600);
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-success-default);
+  color: var(--color-success-default);
 }
 
 .warning {
-  background-color: color-mix(
-    in srgb,
-    var(--color-warning-400) 16%,
-    var(--color-bg-primary)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--color-warning-600) 35%,
-    var(--color-bg-primary)
-  );
-  color: var(--color-warning-600);
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-warning-default);
+  color: var(--color-warning-default);
 }
 
 .danger {
-  background-color: color-mix(
-    in srgb,
-    var(--color-danger-400) 16%,
-    var(--color-bg-primary)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--color-danger-600) 35%,
-    var(--color-bg-primary)
-  );
-  color: var(--color-danger-600);
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-danger-default);
+  color: var(--color-danger-default);
 }
 
 .info {
-  background-color: color-mix(
-    in srgb,
-    var(--color-info-400) 16%,
-    var(--color-bg-primary)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--color-info-600) 35%,
-    var(--color-bg-primary)
-  );
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-info-600);
   color: var(--color-info-600);
 }
 
@@ -126,4 +94,3 @@
   border-color: var(--color-brand-300);
   color: var(--color-brand-700);
 }
-

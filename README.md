@@ -25,19 +25,19 @@ Add screenshots here when preparing your portfolio case study:
 npm install
 ```
 
-2. Run the app in development mode:
+1. Run the app in development mode:
 
 ```bash
 npm run dev
 ```
 
-3. Run Storybook:
+1. Run Storybook:
 
 ```bash
 npm run storybook
 ```
 
-4. Run tests:
+1. Run tests:
 
 ```bash
 npm run test
@@ -51,13 +51,13 @@ npm run test
 npm run build-storybook
 ```
 
-2. After build completes, locate the generated folder:
+1. After build completes, locate the generated folder:
 
 ```text
 storybook-static/
 ```
 
-3. Go to Vercel and use drag-and-drop deployment:
+1. Go to Vercel and use drag-and-drop deployment:
 
 - Open the Vercel dashboard
 - Choose "Add New Project" or "Deploy"

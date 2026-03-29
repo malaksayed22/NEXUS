@@ -17,7 +17,7 @@ export interface CardImageProps {
   objectFit?: "cover" | "contain";
 }
 
-export interface CardSectionProps extends HTMLAttributes<HTMLDivElement> {}
+export type CardSectionProps = HTMLAttributes<HTMLDivElement>;
 
 const CardHeader = ({ className, ...rest }: CardSectionProps) => (
   <div className={cn(styles.header, className)} {...rest} />
@@ -110,8 +110,8 @@ const CardBase = forwardRef<HTMLDivElement, CardProps>(
           isClickable && styles.clickable,
           className,
         )}
-        role={isClickable ? (role ?? "button") : role}
-        tabIndex={isClickable ? (tabIndex ?? 0) : tabIndex}
+        role={isClickable ? role ?? "button" : role}
+        tabIndex={isClickable ? tabIndex ?? 0 : tabIndex}
         whileTap={isClickable ? { scale: 0.99 } : undefined}
         onClick={onClick}
         onKeyDown={handleKeyDown}

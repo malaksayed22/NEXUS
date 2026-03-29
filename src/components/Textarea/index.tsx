@@ -1,6 +1,5 @@
 import {
   forwardRef,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -74,18 +73,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const errorId = `${textareaId}-error`;
     const countId = `${textareaId}-count`;
 
-    const [currentValue, setCurrentValue] = useState(
-      String(value ?? defaultValue ?? ""),
+    const [uncontrolledValue, setUncontrolledValue] = useState(
+      String(defaultValue ?? ""),
     );
 
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const mirrorRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-      if (typeof value === "string") {
-        setCurrentValue(value);
-      }
-    }, [value]);
+    const isControlled = value !== undefined;
+    const currentValue = isControlled ? String(value ?? "") : uncontrolledValue;
 
     useLayoutEffect(() => {
       if (!autoResize || !textareaRef.current || !mirrorRef.current) {
@@ -149,7 +145,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               value={value}
               defaultValue={defaultValue}
               onChange={(event) => {
-                setCurrentValue(event.target.value);
+                if (!isControlled) {
+                  setUncontrolledValue(event.target.value);
+                }
                 onChange?.(event);
               }}
               placeholder={textareaPlaceholder}
@@ -158,7 +156,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               maxLength={maxLength}
               disabled={disabled}
               aria-label={resolvedAriaLabel}
-              aria-invalid={isInvalid || undefined}
               aria-describedby={describedByIds || undefined}
             />
 

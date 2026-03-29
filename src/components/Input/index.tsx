@@ -110,7 +110,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               className={styles.input}
               disabled={disabled}
               aria-label={resolvedAriaLabel}
-              aria-invalid={isInvalid || undefined}
               aria-describedby={describedByIds || undefined}
             />
             {label ? (

@@ -6,9 +6,9 @@
   font-family: var(--font-body);
   font-weight: var(--font-weight-bold);
   color: var(--color-neutral-0);
-  border: calc(var(--space-1) * 0.25) solid
-    color-mix(in srgb, var(--color-border-default) 70%, transparent);
+  border: calc(var(--space-1) * 0.25) solid var(--color-border-default);
   overflow: hidden;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -169,4 +169,3 @@
   color: var(--color-neutral-800);
   box-shadow: 0 0 0 calc(var(--space-1) * 0.5) var(--color-bg-primary);
 }
-

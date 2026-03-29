@@ -7,6 +7,7 @@
   align-items: center;
   padding: var(--space-6);
   background: rgb(0 0 0 / 0.5);
+  -webkit-backdrop-filter: blur(calc(var(--space-1) * 0.5));
   backdrop-filter: blur(calc(var(--space-1) * 0.5));
 }
 
@@ -65,8 +66,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
+  transition: background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
@@ -119,4 +119,3 @@
   justify-content: flex-end;
   gap: var(--space-3);
 }
-
