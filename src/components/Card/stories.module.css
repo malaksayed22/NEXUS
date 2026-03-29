@@ -1,0 +1,17 @@
+﻿.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.gridThree {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: calc(var(--space-1) * 225)) {
+  .gridThree {
+    grid-template-columns: 1fr;
+  }
+}
+

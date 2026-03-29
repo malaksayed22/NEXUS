@@ -1,0 +1,49 @@
+﻿.container {
+  min-height: calc(var(--space-1) * 55);
+  display: grid;
+  place-items: center;
+}
+
+.triggerButton {
+  height: calc(var(--space-1) * 10);
+  padding-inline: var(--space-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-default);
+  color: var(--color-text-inverse);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.triggerButton:hover {
+  background: var(--color-brand-hover);
+}
+
+.triggerButton:focus-visible {
+  outline: calc(var(--space-1) * 0.5) solid var(--color-border-focus);
+  outline-offset: calc(var(--space-1) * 0.5);
+}
+
+.footerButton {
+  height: calc(var(--space-1) * 9);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-md);
+  border: calc(var(--space-1) * 0.25) solid var(--color-border-default);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.primaryFooterButton {
+  border-color: var(--color-brand-default);
+  background: var(--color-brand-default);
+  color: var(--color-text-inverse);
+}
+
+.longText {
+  display: grid;
+  gap: var(--space-3);
+}
+

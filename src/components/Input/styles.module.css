@@ -1,0 +1,180 @@
+﻿.wrapper {
+  width: 100%;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.control {
+  display: flex;
+  width: 100%;
+  border: calc(var(--space-1) * 0.375) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-secondary);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.control:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 calc(var(--space-1) * 0.75)
+    color-mix(in srgb, var(--color-border-focus) 15%, transparent);
+}
+
+.invalid .control {
+  border-color: var(--color-danger-default);
+}
+
+.invalid .control:focus-within {
+  box-shadow: 0 0 0 calc(var(--space-1) * 0.75)
+    color-mix(in srgb, var(--color-danger-default) 15%, transparent);
+}
+
+.success .control {
+  border-color: var(--color-success-default);
+}
+
+.fieldWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  padding-inline: var(--space-3);
+  color: var(--color-text-primary);
+  background: transparent;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  transform: translateY(-50%);
+  font-size: calc(var(--space-1) * 3.25);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast),
+    font-size var(--transition-fast);
+}
+
+.withLabel .input {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-1);
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-1.45rem);
+  font-size: calc(var(--space-1) * 2.75);
+}
+
+.addon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(var(--space-1) * 10);
+  padding-inline: var(--space-3);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.addon svg {
+  width: calc(var(--space-1) * 4.5);
+  height: calc(var(--space-1) * 4.5);
+}
+
+.leftAddon {
+  border-right: calc(var(--space-1) * 0.25) solid var(--color-border-default);
+}
+
+.rightAddon {
+  border-left: calc(var(--space-1) * 0.25) solid var(--color-border-default);
+}
+
+.success .rightAddon {
+  color: var(--color-success-default);
+}
+
+.helperText,
+.errorText {
+  font-size: calc(var(--space-1) * 3);
+  line-height: var(--line-height-normal);
+}
+
+.helperText {
+  color: var(--color-text-secondary);
+}
+
+.errorText {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-danger-default);
+}
+
+.errorIcon {
+  display: inline-flex;
+  width: calc(var(--space-1) * 3.5);
+  height: calc(var(--space-1) * 3.5);
+}
+
+.errorIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.disabled .control {
+  background-color: var(--color-bg-tertiary);
+  cursor: not-allowed;
+}
+
+.disabled .input,
+.disabled .input::placeholder,
+.disabled .label,
+.disabled .addon {
+  color: var(--color-text-disabled);
+}
+
+.disabled .input {
+  cursor: not-allowed;
+}
+
+.sm .control {
+  min-height: calc(var(--space-1) * 8);
+}
+
+.sm .input {
+  font-size: var(--text-sm);
+}
+
+.md .control {
+  min-height: calc(var(--space-1) * 10);
+}
+
+.md .input {
+  font-size: var(--text-md);
+}
+
+.lg .control {
+  min-height: calc(var(--space-1) * 12);
+}
+
+.lg .input {
+  font-size: var(--text-lg);
+}
+

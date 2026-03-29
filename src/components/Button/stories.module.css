@@ -1,0 +1,16 @@
+﻿.row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.rowAlign {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.fullWidthWrap {
+  width: calc(var(--space-1) * 80);
+}
+

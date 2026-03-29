@@ -1,0 +1,27 @@
+﻿.panel {
+  display: grid;
+  gap: var(--space-3);
+  max-width: calc(var(--space-1) * 105);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.button {
+  height: calc(var(--space-1) * 9);
+  padding-inline: var(--space-3);
+  border: calc(var(--space-1) * 0.25) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: calc(var(--space-1) * 0.5) solid var(--color-border-focus);
+  outline-offset: calc(var(--space-1) * 0.5);
+}
+
