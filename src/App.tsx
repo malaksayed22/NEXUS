@@ -3,8 +3,7 @@ import type React from "react";
 import "./App.css";
 
 const STORYBOOK_URL =
-  import.meta.env.VITE_STORYBOOK_URL ?? "https://github.com/malaksayed22/NEXUS";
-// Set VITE_STORYBOOK_URL after Storybook deployment.
+  import.meta.env.VITE_STORYBOOK_URL ?? "https://nexus-storybook-malak.vercel.app";
 
 type StackItem = {
   n: string;

@@ -11,7 +11,7 @@ NEXUS is a production-grade UI component library built with React 18, TypeScript
 [![Tests](https://img.shields.io/badge/tests-53%20passing-brightgreen)](./coverage)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-**Live Storybook: Coming soon** &nbsp;|&nbsp; **Portfolio: Coming soon** &nbsp;|&nbsp; **[GitHub](https://github.com/malaksayed22/NEXUS)**
+**[Live Storybook](https://nexus-storybook-malak.vercel.app)** &nbsp;|&nbsp; **[Portfolio](https://nexus-portfolio-malak.vercel.app)** &nbsp;|&nbsp; **[GitHub](https://github.com/malaksayed22/NEXUS)**
 
 ---
 
