@@ -20,6 +20,15 @@ type ComponentItem = {
   storybookPath: string;
 };
 
+const stackItems: StackItem[] = [
+  { n: 'React 18',      d: 'Hooks · forwardRef · portals · concurrent',  c: '#61DAFB', url: 'https://react.dev' },
+  { n: 'TypeScript 5',  d: 'Strict mode · fully typed props & utils',     c: '#3178C6', url: 'https://www.typescriptlang.org/docs' },
+  { n: 'Framer Motion', d: 'Springs · layout anim · AnimatePresence',     c: '#BB4BFF', url: 'https://www.framer.com/motion' },
+  { n: 'Storybook 7',   d: 'Autodocs · controls · MDX · dark mode',       c: '#FF4785', url: 'https://storybook.js.org/docs' },
+  { n: 'Vitest',        d: 'Unit tests · RTL · coverage reports',         c: '#6E9F18', url: 'https://vitest.dev' },
+  { n: 'CSS Modules',   d: 'Scoped styles · tokens · zero runtime',       c: '#FFB347', url: 'https://github.com/css-modules/css-modules' },
+];
+
 const components: ComponentItem[] = [
   { name: 'Button',   desc: '4 variants · 3 sizes · loading · icons',        tag: 'Core',     emoji: '⚡', storybookPath: '?path=/docs/components-button--docs'   },
   { name: 'Input',    desc: 'Float label · addons · validation states',       tag: 'Form',     emoji: '✏️', storybookPath: '?path=/docs/components-input--docs'    },
@@ -38,6 +47,8 @@ export default function App() {
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState<string>("");
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -69,16 +80,39 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('section.comps, section.stack');
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('section-visible');
+          obs.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.15 }
+    );
+    sections.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    const onOutside = () => setMenuOpen(false);
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('click', onOutside);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('click', onOutside);
+    };
+  }, [menuOpen]);
+
   const px = (mouse.x - 0.5) * 30;
   const py = (mouse.y - 0.5) * 30;
   const motionClassX =
     px > 10 ? "motion-x-pos" : px < -10 ? "motion-x-neg" : "motion-x-mid";
   const motionClassY =
     py > 10 ? "motion-y-pos" : py < -10 ? "motion-y-neg" : "motion-y-mid";
-
-  const openComponent = (path: string) => {
-    window.open(`${STORYBOOK_URL}${path}`, '_blank', 'noopener,noreferrer');
-  };
 
   const scrollTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -89,14 +123,10 @@ export default function App() {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  const stackItems: StackItem[] = [
-    { n: 'React 18',      d: 'Hooks · forwardRef · portals · concurrent',  c: '#61DAFB', url: 'https://react.dev' },
-    { n: 'TypeScript 5',  d: 'Strict mode · fully typed props & utils',     c: '#3178C6', url: 'https://www.typescriptlang.org/docs' },
-    { n: 'Framer Motion', d: 'Springs · layout anim · AnimatePresence',     c: '#BB4BFF', url: 'https://www.framer.com/motion' },
-    { n: 'Storybook 7',   d: 'Autodocs · controls · MDX · dark mode',       c: '#FF4785', url: 'https://storybook.js.org/docs' },
-    { n: 'Vitest',        d: 'Unit tests · RTL · coverage reports',         c: '#6E9F18', url: 'https://vitest.dev' },
-    { n: 'CSS Modules',   d: 'Scoped styles · tokens · zero runtime',       c: '#FFB347', url: 'https://github.com/css-modules/css-modules' },
-  ];
+  const tags = ['All', ...Array.from(new Set(components.map((c) => c.tag)))];
+  const filteredComponents = activeTag
+    ? components.filter((c) => c.tag === activeTag)
+    : components;
 
   return (
     <div className={`root ${motionClassX} ${motionClassY}`}>
@@ -152,8 +182,43 @@ export default function App() {
             >
               Storybook ↗
             </a>
+            <button
+              className="nav-hamburger"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              onClick={(e) => { e.stopPropagation(); setMenuOpen((o) => !o); }}
+            >
+              <span className={`ham-line${menuOpen ? ' ham-line-1-open' : ''}`} />
+              <span className={`ham-line${menuOpen ? ' ham-line-2-open' : ''}`} />
+              <span className={`ham-line${menuOpen ? ' ham-line-3-open' : ''}`} />
+            </button>
           </div>
         </div>
+        {menuOpen && (
+          <div
+            id="mobile-menu"
+            className="mobile-menu"
+            role="navigation"
+            aria-label="Mobile navigation"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <a
+              href="#components"
+              className="mobile-link"
+              onClick={(e) => { scrollTo('components')(e); setMenuOpen(false); }}
+            >
+              Components
+            </a>
+            <a
+              href="#stack"
+              className="mobile-link"
+              onClick={(e) => { scrollTo('stack')(e); setMenuOpen(false); }}
+            >
+              Stack
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ── */}
@@ -272,19 +337,29 @@ export default function App() {
             <br />
             <span className="dim">Nothing extra.</span>
           </h2>
+          <div className="tag-filter" role="group" aria-label="Filter by category">
+            {tags.map((tag) => (
+              <button
+                key={tag}
+                className={`tag-btn${(tag === 'All' ? activeTag === null : activeTag === tag) ? ' tag-btn-active' : ''}`}
+                onClick={() => setActiveTag(tag === 'All' ? null : tag)}
+                aria-pressed={tag === 'All' ? activeTag === null : activeTag === tag}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
           <div className="comp-grid">
-            {components.map((c, idx) => {
+            {filteredComponents.map((c) => {
+              const originalIdx = components.indexOf(c);
               return (
-                <div
+                <a
                   key={c.name}
-                  className={`comp-card tone${idx % 6} ${
-                    hovered === c.name ? "comp-hov" : ""
-                  }`}
-                  tabIndex={0}
-                  role="button"
+                  href={`${STORYBOOK_URL}${c.storybookPath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`comp-card tone${originalIdx % 6}${hovered === c.name ? ' comp-hov' : ''}`}
                   aria-label={`View ${c.name} component in Storybook`}
-                  onClick={() => openComponent(c.storybookPath)}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openComponent(c.storybookPath); } }}
                   onMouseEnter={() => setHovered(c.name)}
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(c.name)}
@@ -299,7 +374,7 @@ export default function App() {
                   <div className="cc-desc">{c.desc}</div>
                   <div className="cc-rule" />
                   <div className="cc-hint">View in Storybook ↗</div>
-                </div>
+                </a>
               );
             })}
           </div>
