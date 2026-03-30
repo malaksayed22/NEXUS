@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import type React from "react";
 import "./App.css";
 
-const STORYBOOK_URL =
-  import.meta.env.VITE_STORYBOOK_URL ?? "https://nexus-storybook-malak.vercel.app";
+const STORYBOOK_URL = "https://nexus-storybook-malak.vercel.app";
 
 type StackItem = {
   n: string;
