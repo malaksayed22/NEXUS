@@ -35,7 +35,6 @@ const meta = {
   },
 } satisfies Meta<typeof Modal>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 const ControlledModal = (args: Story["args"]) => {
@@ -148,3 +147,5 @@ export const Fullscreen: Story = {
   },
   render: ControlledModal,
 };
+
+export default meta;

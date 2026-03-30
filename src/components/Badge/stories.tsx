@@ -26,7 +26,6 @@ const meta = {
   },
 } satisfies Meta<typeof Badge>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const VariantPalette: Story = {
@@ -78,3 +77,5 @@ export const CompactStatus: Story = {
     children: "Queued",
   },
 };
+
+export default meta;

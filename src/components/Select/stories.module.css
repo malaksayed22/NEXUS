@@ -1,0 +1,10 @@
+.wrap {
+  width: 280px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 280px;
+}

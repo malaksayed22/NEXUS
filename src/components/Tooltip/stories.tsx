@@ -29,7 +29,6 @@ const meta = {
   },
 } satisfies Meta<typeof Tooltip>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const AllPlacements: Story = {
@@ -83,3 +82,5 @@ export const Disabled: Story = {
     content: "Should not appear",
   },
 };
+
+export default meta;

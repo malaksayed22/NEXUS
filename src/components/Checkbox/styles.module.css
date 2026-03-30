@@ -1,0 +1,111 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.root.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.disabled .label {
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input — accessible but not visible */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom checkbox box */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid var(--color-border-default);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-inverse);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* Focus ring — driven by the hidden input's focus-visible */
+.input:focus-visible + .box {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Checked state */
+.checked {
+  background: var(--color-brand-default);
+  border-color: var(--color-brand-default);
+}
+
+/* Indeterminate state */
+.indeterminate {
+  background: var(--color-brand-default);
+  border-color: var(--color-brand-default);
+}
+
+/* Error state */
+.errorBox {
+  border-color: var(--color-danger-default);
+}
+
+/* Hover — not disabled */
+.label:hover .box:not(.checked):not(.indeterminate) {
+  border-color: var(--color-border-strong);
+}
+
+/* Sizes */
+.sm .box,
+.box.sm { width: 14px; height: 14px; }
+.box.sm svg { width: 9px; height: 9px; }
+
+.md .box,
+.box.md { width: 16px; height: 16px; }
+.box.md svg { width: 11px; height: 11px; }
+
+.lg .box,
+.box.lg { width: 20px; height: 20px; }
+.box.lg svg { width: 13px; height: 13px; }
+
+.labelText {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.sm .labelText { font-size: var(--text-xs); }
+.lg .labelText { font-size: var(--text-md); }
+
+.helperText {
+  margin: 0;
+  margin-left: calc(16px + var(--space-2));
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.helperError {
+  color: var(--color-danger-default);
+}

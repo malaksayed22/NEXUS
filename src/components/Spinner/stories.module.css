@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.inlineRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}

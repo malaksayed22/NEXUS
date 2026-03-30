@@ -11,7 +11,6 @@ const meta = {
   },
 } satisfies Meta<typeof ToastProvider>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 const ToastDemo = ({
@@ -129,3 +128,5 @@ export const Persistent: Story = {
   args: {},
   render: () => <WithProvider mode="persistent" />,
 };
+
+export default meta;

@@ -1,0 +1,106 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.group.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.root.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.disabled .label {
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom radio dot */
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-default);
+  background: var(--color-bg-primary);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.input:focus-visible + .dot {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.checked {
+  border-color: var(--color-brand-default);
+  background: var(--color-brand-default);
+}
+
+.label:hover .dot:not(.checked) {
+  border-color: var(--color-border-strong);
+}
+
+.innerDot {
+  display: block;
+  border-radius: var(--radius-full);
+  background: var(--color-text-inverse);
+}
+
+/* Sizes */
+.dot.sm  { width: 14px; height: 14px; }
+.sm .innerDot { width: 5px; height: 5px; }
+
+.dot.md  { width: 16px; height: 16px; }
+.md .innerDot { width: 6px; height: 6px; }
+
+.dot.lg  { width: 20px; height: 20px; }
+.lg .innerDot { width: 8px; height: 8px; }
+
+.labelText {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.sm .labelText { font-size: var(--text-xs); }
+.lg .labelText { font-size: var(--text-md); }
+
+.helperText {
+  margin: 0;
+  margin-left: calc(16px + var(--space-2));
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}

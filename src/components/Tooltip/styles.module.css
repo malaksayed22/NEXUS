@@ -1,11 +1,11 @@
-﻿.wrapper {
+.wrapper {
   position: relative;
   display: inline-flex;
 }
 
 .tooltip {
   position: absolute;
-  z-index: 1200;
+  z-index: 9999;
   max-width: calc(var(--space-1) * 60);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);

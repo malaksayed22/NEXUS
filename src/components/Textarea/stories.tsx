@@ -26,7 +26,6 @@ const meta = {
   },
 } satisfies Meta<typeof Textarea>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const MessageComposer: Story = {};
@@ -68,3 +67,5 @@ export const ErrorState: Story = {
     </div>
   ),
 };
+
+export default meta;

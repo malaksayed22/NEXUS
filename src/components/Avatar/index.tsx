@@ -111,9 +111,9 @@ export const AvatarGroup = ({ avatars, max = 5 }: AvatarGroupProps) => {
 
   return (
     <div className={styles.group}>
-      {visible.map((avatar, index) => (
+      {visible.map((avatar) => (
         <span
-          key={`${avatar.name ?? "avatar"}-${index}`}
+          key={`${avatar.name ?? ""}|${avatar.src ?? ""}|${avatar.status ?? ""}|${avatar.size ?? ""}|${avatar.shape ?? ""}`}
           className={styles.groupItem}
         >
           <Avatar {...avatar} />

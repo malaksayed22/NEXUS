@@ -40,7 +40,6 @@ const meta = {
   },
 } satisfies Meta<typeof Input>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const BaseField: Story = {};
@@ -107,3 +106,5 @@ export const Disabled: Story = {
     placeholder: " ",
   },
 };
+
+export default meta;

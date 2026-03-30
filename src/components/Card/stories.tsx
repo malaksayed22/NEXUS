@@ -21,7 +21,6 @@ const meta = {
   },
 } satisfies Meta<typeof Card>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const AllVariants: Story = {
@@ -111,3 +110,5 @@ export const MinimalCard: Story = {
     </Card>
   ),
 };
+
+export default meta;

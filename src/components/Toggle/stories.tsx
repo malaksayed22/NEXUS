@@ -24,7 +24,6 @@ const meta = {
   },
 } satisfies Meta<typeof Toggle>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Controlled = (args: Story["args"]) => {
@@ -73,3 +72,5 @@ export const Disabled: Story = {
   },
   render: Controlled,
 };
+
+export default meta;

@@ -1,12 +1,29 @@
 {
-  "name": "project1",
+  "name": "myui",
+  "version": "0.1.0",
+  "description": "Production-grade React component library — token-driven, spring-animated, WCAG accessible.",
+  "keywords": [
+    "react",
+    "component-library",
+    "design-system",
+    "typescript",
+    "storybook",
+    "framer-motion",
+    "accessibility"
+  ],
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git"
+  },
+  "homepage": "https://YOUR_STORYBOOK_URL",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "type-check": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
+    "type-check": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.test.json",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -21,11 +38,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@storybook/addon-a11y": "^7.6.20",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/addon-links": "^7.6.20",
+    "@storybook/addon-storysource": "^7.6.20",
     "@storybook/blocks": "^7.6.20",
     "@storybook/react": "^7.6.20",
     "@storybook/react-vite": "^7.6.20",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",

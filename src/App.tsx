@@ -33,8 +33,12 @@ const components: ComponentItem[] = [
   { name: 'Button',   desc: '4 variants · 3 sizes · loading · icons',        tag: 'Core',     emoji: '⚡', storybookPath: '?path=/docs/components-button--docs'   },
   { name: 'Input',    desc: 'Float label · addons · validation states',       tag: 'Form',     emoji: '✏️', storybookPath: '?path=/docs/components-input--docs'    },
   { name: 'Textarea', desc: 'Auto-resize · char count · error state',         tag: 'Form',     emoji: '📝', storybookPath: '?path=/docs/components-textarea--docs' },
+  { name: 'Checkbox', desc: 'Controlled · indeterminate · size variants',     tag: 'Form',     emoji: '☑️', storybookPath: '?path=/docs/components-checkbox--docs' },
+  { name: 'Radio',    desc: 'Group context · keyboard nav · helper text',     tag: 'Form',     emoji: '🔵', storybookPath: '?path=/docs/components-radio--docs'    },
+  { name: 'Select',   desc: 'Native · label · error · placeholder · sizes',  tag: 'Form',     emoji: '⬇️', storybookPath: '?path=/docs/components-select--docs'   },
   { name: 'Badge',    desc: '6 variants · dot · removable pill',              tag: 'Display',  emoji: '🏷️', storybookPath: '?path=/docs/components-badge--docs'    },
   { name: 'Avatar',   desc: 'Image · initials · status · group stack',        tag: 'Display',  emoji: '👤', storybookPath: '?path=/docs/components-avatar--docs'   },
+  { name: 'Spinner',  desc: '5 sizes · aria-label · reduced motion',         tag: 'Feedback', emoji: '⏳', storybookPath: '?path=/docs/components-spinner--docs'  },
   { name: 'Card',     desc: 'Elevated · outlined · compound API',             tag: 'Layout',   emoji: '🃏', storybookPath: '?path=/docs/components-card--docs'     },
   { name: 'Modal',    desc: 'Focus trap · ARIA · portal · 5 sizes',           tag: 'Overlay',  emoji: '🪟', storybookPath: '?path=/docs/components-modal--docs'    },
   { name: 'Toast',    desc: 'Context API · progress bar · stacking',          tag: 'Feedback', emoji: '🔔', storybookPath: '?path=/docs/components-toast--docs'    },
@@ -67,16 +71,26 @@ export default function App() {
       }
       setActiveSection(found);
     };
-    const onMouse = (e: MouseEvent) =>
-      setMouse({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
+    let rafId = 0;
+    const onMouse = (e: MouseEvent) => {
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      rafId = window.requestAnimationFrame(() => {
+        setMouse({
+          x: e.clientX / window.innerWidth,
+          y: e.clientY / window.innerHeight,
+        });
       });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("mousemove", onMouse, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("mousemove", onMouse);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 
@@ -281,7 +295,7 @@ export default function App() {
 
           <div className="stats-row">
             {[
-              ["10", "Components"],
+              ["14", "Components"],
               ["100%", "TypeScript"],
               ["WCAG AA", "Accessible"],
               ["✦", "Animated"],
