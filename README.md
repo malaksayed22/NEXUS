@@ -11,9 +11,7 @@ NEXUS is a production-grade UI component library built with React 18, TypeScript
 [![Tests](https://img.shields.io/badge/tests-53%20passing-brightgreen)](./coverage)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-**[â†’ Live Storybook](https://YOUR_STORYBOOK_URL)** &nbsp;|&nbsp; **[â†’ Portfolio](https://YOUR_PORTFOLIO_URL)** &nbsp;|&nbsp; **[â†’ GitHub](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)**
-
-> Replace the three links above with your real URLs after deploying to Vercel.
+**Live Storybook: Coming soon** &nbsp;|&nbsp; **Portfolio: Coming soon** &nbsp;|&nbsp; **[GitHub](https://github.com/malaksayed22/NEXUS)**
 
 ---
 
@@ -31,18 +29,18 @@ Most UI libraries give you unstyled primitives or opinionated theme lock-in. NEX
 
 ## Component Library
 
-| Component | Category | Highlights |
-|-----------|----------|------------|
-| **Button** | Core | 4 variants Â· 3 sizes Â· loading state Â· icon slots Â· `forwardRef` |
-| **Input** | Form | Floating label Â· prefix/suffix addons Â· validation states |
-| **Textarea** | Form | Auto-resize Â· character count Â· error state |
-| **Badge** | Display | 6 variants Â· dot indicator Â· removable pill |
-| **Avatar** | Display | Image Â· initials fallback Â· status ring Â· `AvatarGroup` |
-| **Card** | Layout | Compound API (`Card.Header`, `.Body`, `.Footer`, `.Image`) Â· 3 variants |
-| **Modal** | Overlay | Focus trap Â· body scroll lock Â· `createPortal` Â· 5 sizes |
-| **Toast** | Feedback | Context API (`useToast`) Â· progress bar Â· pause-on-hover Â· stacking |
-| **Tooltip** | Overlay | 4 placements Â· open delay Â· keyboard accessible |
-| **Toggle** | Form | Spring physics Â· 3 sizes Â· `role="switch"` Â· label slots |
+| Component    | Category | Highlights                                                               |
+| ------------ | -------- | ------------------------------------------------------------------------ |
+| **Button**   | Core     | 4 variants Â· 3 sizes Â· loading state Â· icon slots Â· `forwardRef`     |
+| **Input**    | Form     | Floating label Â· prefix/suffix addons Â· validation states              |
+| **Textarea** | Form     | Auto-resize Â· character count Â· error state                            |
+| **Badge**    | Display  | 6 variants Â· dot indicator Â· removable pill                            |
+| **Avatar**   | Display  | Image Â· initials fallback Â· status ring Â· `AvatarGroup`               |
+| **Card**     | Layout   | Compound API (`Card.Header`, `.Body`, `.Footer`, `.Image`) Â· 3 variants |
+| **Modal**    | Overlay  | Focus trap Â· body scroll lock Â· `createPortal` Â· 5 sizes              |
+| **Toast**    | Feedback | Context API (`useToast`) Â· progress bar Â· pause-on-hover Â· stacking   |
+| **Tooltip**  | Overlay  | 4 placements Â· open delay Â· keyboard accessible                        |
+| **Toggle**   | Form     | Spring physics Â· 3 sizes Â· `role="switch"` Â· label slots              |
 
 ---
 
@@ -138,7 +136,7 @@ npx vercel storybook-static --prod
 # Option B: Dashboard â†’ New Project â†’ drag storybook-static/
 ```
 
-4. After deploying, update the `STORYBOOK_URL` constant in `src/App.tsx` and the link in this README.
+4. After deploying, set `VITE_STORYBOOK_URL` in your environment and update the Storybook line in this README.
 
 ---
 
@@ -152,10 +150,12 @@ import {
   Input,
   Textarea,
   Badge,
-  Avatar, AvatarGroup,
+  Avatar,
+  AvatarGroup,
   Card,
   Modal,
-  ToastProvider, useToast,
+  ToastProvider,
+  useToast,
   Tooltip,
   Toggle,
 } from "./src";
@@ -165,20 +165,19 @@ import {
 
 ## Scripts Reference
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Vite dev server for portfolio page |
-| `npm run build` | Production build of portfolio page |
-| `npm run storybook` | Storybook on port 6006 |
-| `npm run build-storybook` | Static Storybook export |
-| `npm run test` | Vitest test run |
-| `npm run test:coverage` | Vitest with v8 coverage report |
-| `npm run type-check` | TypeScript strict check (no emit) |
-| `npm run lint` | ESLint |
+| Script                    | Description                        |
+| ------------------------- | ---------------------------------- |
+| `npm run dev`             | Vite dev server for portfolio page |
+| `npm run build`           | Production build of portfolio page |
+| `npm run storybook`       | Storybook on port 6006             |
+| `npm run build-storybook` | Static Storybook export            |
+| `npm run test`            | Vitest test run                    |
+| `npm run test:coverage`   | Vitest with v8 coverage report     |
+| `npm run type-check`      | TypeScript strict check (no emit)  |
+| `npm run lint`            | ESLint                             |
 
 ---
 
 ## License
 
 MIT â€” see [LICENSE](./LICENSE)
-

@@ -11,13 +11,13 @@
     "framer-motion",
     "accessibility"
   ],
-  "author": "Your Name <you@example.com>",
+  "author": "Malak Sayed",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git"
+    "url": "https://github.com/malaksayed22/NEXUS.git"
   },
-  "homepage": "https://YOUR_STORYBOOK_URL",
+  "homepage": "https://github.com/malaksayed22/NEXUS",
   "private": true,
   "type": "module",
   "scripts": {

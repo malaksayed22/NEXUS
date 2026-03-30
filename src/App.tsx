@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import type React from "react";
 import "./App.css";
 
-const STORYBOOK_URL = 'http://localhost:6006';
-// TODO: replace with your NEXUS Storybook Vercel URL
+const STORYBOOK_URL =
+  import.meta.env.VITE_STORYBOOK_URL ?? "https://github.com/malaksayed22/NEXUS";
+// Set VITE_STORYBOOK_URL after Storybook deployment.
 
 type StackItem = {
   n: string;
@@ -21,29 +22,143 @@ type ComponentItem = {
 };
 
 const stackItems: StackItem[] = [
-  { n: 'React 18',      d: 'Hooks · forwardRef · portals · concurrent',  c: '#61DAFB', url: 'https://react.dev' },
-  { n: 'TypeScript 5',  d: 'Strict mode · fully typed props & utils',     c: '#3178C6', url: 'https://www.typescriptlang.org/docs' },
-  { n: 'Framer Motion', d: 'Springs · layout anim · AnimatePresence',     c: '#BB4BFF', url: 'https://www.framer.com/motion' },
-  { n: 'Storybook 7',   d: 'Autodocs · controls · MDX · dark mode',       c: '#FF4785', url: 'https://storybook.js.org/docs' },
-  { n: 'Vitest',        d: 'Unit tests · RTL · coverage reports',         c: '#6E9F18', url: 'https://vitest.dev' },
-  { n: 'CSS Modules',   d: 'Scoped styles · tokens · zero runtime',       c: '#FFB347', url: 'https://github.com/css-modules/css-modules' },
+  {
+    n: "React 18",
+    d: "Hooks · forwardRef · portals · concurrent",
+    c: "#61DAFB",
+    url: "https://react.dev",
+  },
+  {
+    n: "TypeScript 5",
+    d: "Strict mode · fully typed props & utils",
+    c: "#3178C6",
+    url: "https://www.typescriptlang.org/docs",
+  },
+  {
+    n: "Framer Motion",
+    d: "Springs · layout anim · AnimatePresence",
+    c: "#BB4BFF",
+    url: "https://www.framer.com/motion",
+  },
+  {
+    n: "Storybook 7",
+    d: "Autodocs · controls · MDX · dark mode",
+    c: "#FF4785",
+    url: "https://storybook.js.org/docs",
+  },
+  {
+    n: "Vitest",
+    d: "Unit tests · RTL · coverage reports",
+    c: "#6E9F18",
+    url: "https://vitest.dev",
+  },
+  {
+    n: "CSS Modules",
+    d: "Scoped styles · tokens · zero runtime",
+    c: "#FFB347",
+    url: "https://github.com/css-modules/css-modules",
+  },
 ];
 
 const components: ComponentItem[] = [
-  { name: 'Button',   desc: '4 variants · 3 sizes · loading · icons',        tag: 'Core',     emoji: '⚡', storybookPath: '?path=/docs/components-button--docs'   },
-  { name: 'Input',    desc: 'Float label · addons · validation states',       tag: 'Form',     emoji: '✏️', storybookPath: '?path=/docs/components-input--docs'    },
-  { name: 'Textarea', desc: 'Auto-resize · char count · error state',         tag: 'Form',     emoji: '📝', storybookPath: '?path=/docs/components-textarea--docs' },
-  { name: 'Checkbox', desc: 'Controlled · indeterminate · size variants',     tag: 'Form',     emoji: '☑️', storybookPath: '?path=/docs/components-checkbox--docs' },
-  { name: 'Radio',    desc: 'Group context · keyboard nav · helper text',     tag: 'Form',     emoji: '🔵', storybookPath: '?path=/docs/components-radio--docs'    },
-  { name: 'Select',   desc: 'Native · label · error · placeholder · sizes',  tag: 'Form',     emoji: '⬇️', storybookPath: '?path=/docs/components-select--docs'   },
-  { name: 'Badge',    desc: '6 variants · dot · removable pill',              tag: 'Display',  emoji: '🏷️', storybookPath: '?path=/docs/components-badge--docs'    },
-  { name: 'Avatar',   desc: 'Image · initials · status · group stack',        tag: 'Display',  emoji: '👤', storybookPath: '?path=/docs/components-avatar--docs'   },
-  { name: 'Spinner',  desc: '5 sizes · aria-label · reduced motion',         tag: 'Feedback', emoji: '⏳', storybookPath: '?path=/docs/components-spinner--docs'  },
-  { name: 'Card',     desc: 'Elevated · outlined · compound API',             tag: 'Layout',   emoji: '🃏', storybookPath: '?path=/docs/components-card--docs'     },
-  { name: 'Modal',    desc: 'Focus trap · ARIA · portal · 5 sizes',           tag: 'Overlay',  emoji: '🪟', storybookPath: '?path=/docs/components-modal--docs'    },
-  { name: 'Toast',    desc: 'Context API · progress bar · stacking',          tag: 'Feedback', emoji: '🔔', storybookPath: '?path=/docs/components-toast--docs'    },
-  { name: 'Tooltip',  desc: '4 placements · delay · keyboard a11y',           tag: 'Overlay',  emoji: '💬', storybookPath: '?path=/docs/components-tooltip--docs'  },
-  { name: 'Toggle',   desc: 'Spring physics · 3 sizes · label slots',         tag: 'Form',     emoji: '🔘', storybookPath: '?path=/docs/components-toggle--docs'   },
+  {
+    name: "Button",
+    desc: "4 variants · 3 sizes · loading · icons",
+    tag: "Core",
+    emoji: "⚡",
+    storybookPath: "?path=/docs/components-button--docs",
+  },
+  {
+    name: "Input",
+    desc: "Float label · addons · validation states",
+    tag: "Form",
+    emoji: "✏️",
+    storybookPath: "?path=/docs/components-input--docs",
+  },
+  {
+    name: "Textarea",
+    desc: "Auto-resize · char count · error state",
+    tag: "Form",
+    emoji: "📝",
+    storybookPath: "?path=/docs/components-textarea--docs",
+  },
+  {
+    name: "Checkbox",
+    desc: "Controlled · indeterminate · size variants",
+    tag: "Form",
+    emoji: "☑️",
+    storybookPath: "?path=/docs/components-checkbox--docs",
+  },
+  {
+    name: "Radio",
+    desc: "Group context · keyboard nav · helper text",
+    tag: "Form",
+    emoji: "🔵",
+    storybookPath: "?path=/docs/components-radio--docs",
+  },
+  {
+    name: "Select",
+    desc: "Native · label · error · placeholder · sizes",
+    tag: "Form",
+    emoji: "⬇️",
+    storybookPath: "?path=/docs/components-select--docs",
+  },
+  {
+    name: "Badge",
+    desc: "6 variants · dot · removable pill",
+    tag: "Display",
+    emoji: "🏷️",
+    storybookPath: "?path=/docs/components-badge--docs",
+  },
+  {
+    name: "Avatar",
+    desc: "Image · initials · status · group stack",
+    tag: "Display",
+    emoji: "👤",
+    storybookPath: "?path=/docs/components-avatar--docs",
+  },
+  {
+    name: "Spinner",
+    desc: "5 sizes · aria-label · reduced motion",
+    tag: "Feedback",
+    emoji: "⏳",
+    storybookPath: "?path=/docs/components-spinner--docs",
+  },
+  {
+    name: "Card",
+    desc: "Elevated · outlined · compound API",
+    tag: "Layout",
+    emoji: "🃏",
+    storybookPath: "?path=/docs/components-card--docs",
+  },
+  {
+    name: "Modal",
+    desc: "Focus trap · ARIA · portal · 5 sizes",
+    tag: "Overlay",
+    emoji: "🪟",
+    storybookPath: "?path=/docs/components-modal--docs",
+  },
+  {
+    name: "Toast",
+    desc: "Context API · progress bar · stacking",
+    tag: "Feedback",
+    emoji: "🔔",
+    storybookPath: "?path=/docs/components-toast--docs",
+  },
+  {
+    name: "Tooltip",
+    desc: "4 placements · delay · keyboard a11y",
+    tag: "Overlay",
+    emoji: "💬",
+    storybookPath: "?path=/docs/components-tooltip--docs",
+  },
+  {
+    name: "Toggle",
+    desc: "Spring physics · 3 sizes · label slots",
+    tag: "Form",
+    emoji: "🔘",
+    storybookPath: "?path=/docs/components-toggle--docs",
+  },
 ];
 
 export default function App() {
@@ -58,8 +173,8 @@ export default function App() {
     const onScroll = () => {
       setScrollY(window.scrollY);
 
-      const sections = ['components', 'stack'];
-      let found = '';
+      const sections = ["components", "stack"];
+      let found = "";
       for (const id of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
@@ -95,15 +210,18 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>('section.comps, section.stack');
+    const sections = document.querySelectorAll<HTMLElement>(
+      "section.comps, section.stack",
+    );
     const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('section-visible');
-          obs.unobserve(e.target);
-        }
-      }),
-      { threshold: 0.15 }
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("section-visible");
+            obs.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.15 },
     );
     sections.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
@@ -111,13 +229,15 @@ export default function App() {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
     const onOutside = () => setMenuOpen(false);
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('click', onOutside);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onOutside);
     return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('click', onOutside);
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onOutside);
     };
   }, [menuOpen]);
 
@@ -137,7 +257,7 @@ export default function App() {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  const tags = ['All', ...Array.from(new Set(components.map((c) => c.tag)))];
+  const tags = ["All", ...Array.from(new Set(components.map((c) => c.tag)))];
   const filteredComponents = activeTag
     ? components.filter((c) => c.tag === activeTag)
     : components;
@@ -173,9 +293,7 @@ export default function App() {
               onClick={scrollTo("stack")}
               aria-label="Navigate to stack section"
               className={
-                activeSection === "stack"
-                  ? "nav-link nav-active"
-                  : "nav-link"
+                activeSection === "stack" ? "nav-link nav-active" : "nav-link"
               }
             >
               Stack
@@ -189,17 +307,37 @@ export default function App() {
             >
               Storybook ↗
             </a>
-            <button
-              className="nav-hamburger"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-              onClick={(e) => { e.stopPropagation(); setMenuOpen((o) => !o); }}
-            >
-              <span className={`ham-line${menuOpen ? ' ham-line-1-open' : ''}`} />
-              <span className={`ham-line${menuOpen ? ' ham-line-2-open' : ''}`} />
-              <span className={`ham-line${menuOpen ? ' ham-line-3-open' : ''}`} />
-            </button>
+            {menuOpen ? (
+              <button
+                className="nav-hamburger"
+                aria-label="Close menu"
+                aria-expanded="true"
+                aria-controls="mobile-menu"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuOpen((o) => !o);
+                }}
+              >
+                <span className="ham-line ham-line-1-open" />
+                <span className="ham-line ham-line-2-open" />
+                <span className="ham-line ham-line-3-open" />
+              </button>
+            ) : (
+              <button
+                className="nav-hamburger"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuOpen((o) => !o);
+                }}
+              >
+                <span className="ham-line" />
+                <span className="ham-line" />
+                <span className="ham-line" />
+              </button>
+            )}
           </div>
         </div>
         {menuOpen && (
@@ -213,14 +351,20 @@ export default function App() {
             <a
               href="#components"
               className="mobile-link"
-              onClick={(e) => { scrollTo('components')(e); setMenuOpen(false); }}
+              onClick={(e) => {
+                scrollTo("components")(e);
+                setMenuOpen(false);
+              }}
             >
               Components
             </a>
             <a
               href="#stack"
               className="mobile-link"
-              onClick={(e) => { scrollTo('stack')(e); setMenuOpen(false); }}
+              onClick={(e) => {
+                scrollTo("stack")(e);
+                setMenuOpen(false);
+              }}
             >
               Stack
             </a>
@@ -242,7 +386,8 @@ export default function App() {
           </h1>
 
           <p className="hero-sub">
-            A production-grade component library. Animated with spring physics, fully typed, WCAG accessible, and dark-mode ready out of the box.
+            A production-grade component library. Animated with spring physics,
+            fully typed, WCAG accessible, and dark-mode ready out of the box.
           </p>
 
           <div className="hero-actions">
@@ -264,9 +409,8 @@ export default function App() {
                 />
               </svg>
             </a>
-            {/* TODO: replace with your real GitHub repo URL */}
             <a
-              href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME"
+              href="https://github.com/malaksayed22/NEXUS"
               className="btn-outline"
               aria-label="View NEXUS source code on GitHub"
               target="_blank"
@@ -342,17 +486,32 @@ export default function App() {
             <br />
             <span className="dim">Nothing extra.</span>
           </h2>
-          <div className="tag-filter" role="group" aria-label="Filter by category">
-            {tags.map((tag) => (
-              <button
-                key={tag}
-                className={`tag-btn${(tag === 'All' ? activeTag === null : activeTag === tag) ? ' tag-btn-active' : ''}`}
-                onClick={() => setActiveTag(tag === 'All' ? null : tag)}
-                aria-pressed={tag === 'All' ? activeTag === null : activeTag === tag}
-              >
-                {tag}
-              </button>
-            ))}
+          <div
+            className="tag-filter"
+            role="group"
+            aria-label="Filter by category"
+          >
+            {tags.map((tag) =>
+              (tag === "All" ? activeTag === null : activeTag === tag) ? (
+                <button
+                  key={tag}
+                  className="tag-btn tag-btn-active"
+                  onClick={() => setActiveTag(tag === "All" ? null : tag)}
+                  aria-pressed="true"
+                >
+                  {tag}
+                </button>
+              ) : (
+                <button
+                  key={tag}
+                  className="tag-btn"
+                  onClick={() => setActiveTag(tag === "All" ? null : tag)}
+                  aria-pressed="false"
+                >
+                  {tag}
+                </button>
+              ),
+            )}
           </div>
           <div className="comp-grid">
             {filteredComponents.map((c) => {
@@ -363,7 +522,9 @@ export default function App() {
                   href={`${STORYBOOK_URL}${c.storybookPath}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`comp-card tone${originalIdx % 6}${hovered === c.name ? ' comp-hov' : ''}`}
+                  className={`comp-card tone${originalIdx % 6}${
+                    hovered === c.name ? " comp-hov" : ""
+                  }`}
                   aria-label={`View ${c.name} component in Storybook`}
                   onMouseEnter={() => setHovered(c.name)}
                   onMouseLeave={() => setHovered(null)}
@@ -404,7 +565,6 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Learn more about ${s.n}`}
-                style={{ '--sc': s.c } as React.CSSProperties}
               >
                 <div className="scard-dot" />
                 <div className="scard-name">{s.n}</div>
@@ -422,13 +582,14 @@ export default function App() {
         <div className="cta-inner">
           <span className="cta-tag">Ready?</span>
           <h2 className="cta-h2">
-            See NEXUS in action.<br />Live in Storybook.
+            See NEXUS in action.
+            <br />
+            Live in Storybook.
           </h2>
           <p className="cta-p">
             Click through variants, toggle props, switch themes — all
             interactive, all live.
           </p>
-          {/* TODO: replace STORYBOOK_URL with your NEXUS Storybook Vercel URL */}
           <a
             href={`${STORYBOOK_URL}`}
             className="btn-solid btn-big"
@@ -451,19 +612,11 @@ export default function App() {
 
       <footer className="footer">
         <span>
-          <strong>NEXUS</strong> — built by{" "}
-          <a
-            href="YOUR_PORTFOLIO_URL"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Your Name
-          </a>
+          <strong>NEXUS</strong> — built by <span>Malak Sayed</span>
         </span>
         <span className="footer-mid">React · TypeScript · Storybook</span>
-        {/* TODO: replace with your real GitHub repo URL */}
         <a
-          href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME"
+          href="https://github.com/malaksayed22/NEXUS"
           aria-label="View source code on GitHub"
           target="_blank"
           rel="noopener noreferrer"

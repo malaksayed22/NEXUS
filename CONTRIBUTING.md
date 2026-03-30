@@ -7,8 +7,8 @@ Thank you for your interest in improving NEXUS. This document describes how to a
 ## Development Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/malaksayed22/NEXUS.git
+cd NEXUS
 npm install
 npm run storybook   # Component development at localhost:6006
 npm run dev         # Portfolio page at localhost:5173
@@ -95,7 +95,9 @@ const meta = {
   title: "Components/MyComponent",
   component: MyComponent,
   tags: ["autodocs"],
-  args: { /* default args */ },
+  args: {
+    /* default args */
+  },
   argTypes: {
     variant: { control: "select", options: ["a", "b"] },
     onClick: { action: "clicked" },
@@ -173,5 +175,4 @@ Before opening a PR:
 - Use named exports, not default exports for components
 - Keep component files focused â€” no more than one exported component per `index.tsx`
 - Avoid `any` â€” use `unknown` and narrow the type
-- Comments should explain *why*, not *what*. If the code is clear, no comment is needed.
-
+- Comments should explain _why_, not _what_. If the code is clear, no comment is needed.
