@@ -131,12 +131,20 @@ strong {
 }
 .logo {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Fraunces", serif;
-  font-size: 20px;
+  align-items: baseline;
+  gap: 0;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
+  cursor: default;
+  text-decoration: none;
+}
+.logo-nex {
+  color: #ffffff;
+}
+.logo-us {
+  color: #6C63FF;
 }
 .nav-links {
   display: flex;

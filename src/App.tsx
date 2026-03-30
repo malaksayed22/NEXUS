@@ -3,7 +3,7 @@ import type React from "react";
 import "./App.css";
 
 const STORYBOOK_URL = 'http://localhost:6006';
-// TODO: replace with your deployed Storybook URL after deploying to Vercel
+// TODO: replace with your NEXUS Storybook Vercel URL
 
 type StackItem = {
   n: string;
@@ -152,15 +152,8 @@ export default function App() {
       <nav className={scrollY > 50 ? "nav nav-solid" : "nav"}>
         <div className="nav-inner">
           <div className="logo">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M10 2L17 6V14L10 18L3 14V6L10 2Z"
-                stroke="#6C63FF"
-                strokeWidth="1.5"
-              />
-              <circle cx="10" cy="10" r="2.5" fill="#6C63FF" />
-            </svg>
-            <span>MyUI</span>
+            <span className="logo-nex">NEX</span>
+            <span className="logo-us">US</span>
           </div>
           <div className="nav-links">
             <a
@@ -240,26 +233,24 @@ export default function App() {
         <div className="hero-inner">
           <div className="eyebrow">
             <span className="pulse-dot" />
-            React 18 · TypeScript 5 · Framer Motion
+            NEXUS · React 18 · TypeScript 5
           </div>
 
           <h1 className="h1">
-            <span className="h1-line">UI that moves.</span>
-            <span className="h1-line h1-outline">Code that scales.</span>
+            <span className="h1-line">NEXUS.</span>
+            <span className="h1-outline">Built different.</span>
           </h1>
 
           <p className="hero-sub">
-            A production-grade component library. Animated with spring physics,
-            <br />
-            fully typed, WCAG accessible, and dark-mode ready out of the box.
+            A production-grade component library. Animated with spring physics, fully typed, WCAG accessible, and dark-mode ready out of the box.
           </p>
 
           <div className="hero-actions">
-            {/* TODO: replace STORYBOOK_URL with your deployed Vercel URL */}
+            {/* TODO: replace STORYBOOK_URL with your NEXUS Storybook Vercel URL */}
             <a
               href={`${STORYBOOK_URL}`}
               className="btn-solid"
-              aria-label="Open MyUI Storybook documentation in a new tab"
+              aria-label="Open NEXUS Storybook documentation in a new tab"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -277,7 +268,7 @@ export default function App() {
             <a
               href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME"
               className="btn-outline"
-              aria-label="View MyUI source code on GitHub"
+              aria-label="View NEXUS source code on GitHub"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -431,19 +422,17 @@ export default function App() {
         <div className="cta-inner">
           <span className="cta-tag">Ready?</span>
           <h2 className="cta-h2">
-            Explore every component
-            <br />
-            live in Storybook.
+            See NEXUS in action.<br />Live in Storybook.
           </h2>
           <p className="cta-p">
             Click through variants, toggle props, switch themes — all
             interactive, all live.
           </p>
-          {/* TODO: replace STORYBOOK_URL with your deployed Vercel URL */}
+          {/* TODO: replace STORYBOOK_URL with your NEXUS Storybook Vercel URL */}
           <a
             href={`${STORYBOOK_URL}`}
             className="btn-solid btn-big"
-            aria-label="Launch MyUI Storybook in a new tab"
+            aria-label="Launch NEXUS Storybook in a new tab"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -462,14 +451,13 @@ export default function App() {
 
       <footer className="footer">
         <span>
-          Built by{' '}
-          {/* TODO: replace with your personal portfolio URL */}
+          <strong>NEXUS</strong> — built by{" "}
           <a
-            href="https://YOUR_PORTFOLIO_URL"
+            href="YOUR_PORTFOLIO_URL"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <strong>Your Name</strong>
+            Your Name
           </a>
         </span>
         <span className="footer-mid">React · TypeScript · Storybook</span>

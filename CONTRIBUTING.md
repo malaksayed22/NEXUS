@@ -1,6 +1,6 @@
-# Contributing to MyUI
+﻿# Contributing to NEXUS
 
-Thank you for your interest in improving MyUI. This document describes how to add components, write stories, write tests, and keep the codebase consistent.
+Thank you for your interest in improving NEXUS. This document describes how to add components, write stories, write tests, and keep the codebase consistent.
 
 ---
 
@@ -20,17 +20,17 @@ npm run dev         # Portfolio page at localhost:5173
 
 ```
 src/
-├── components/ComponentName/
-│   ├── index.tsx           # Component source
-│   ├── styles.module.css   # Scoped CSS using tokens
-│   ├── stories.tsx         # Storybook stories
-│   ├── stories.module.css  # Story layout helpers
-│   └── test.tsx            # Vitest + RTL tests
-├── styles/
-│   ├── tokens.css          # Design token definitions (light + dark)
-│   └── global.css          # Base reset
-├── utils/                  # Shared hooks and helpers
-└── index.ts                # Public API barrel export
+â”œâ”€â”€ components/ComponentName/
+â”‚   â”œâ”€â”€ index.tsx           # Component source
+â”‚   â”œâ”€â”€ styles.module.css   # Scoped CSS using tokens
+â”‚   â”œâ”€â”€ stories.tsx         # Storybook stories
+â”‚   â”œâ”€â”€ stories.module.css  # Story layout helpers
+â”‚   â””â”€â”€ test.tsx            # Vitest + RTL tests
+â”œâ”€â”€ styles/
+â”‚   â”œâ”€â”€ tokens.css          # Design token definitions (light + dark)
+â”‚   â””â”€â”€ global.css          # Base reset
+â”œâ”€â”€ utils/                  # Shared hooks and helpers
+â””â”€â”€ index.ts                # Public API barrel export
 ```
 
 ---
@@ -41,11 +41,11 @@ src/
 
 ```
 src/components/MyComponent/
-├── index.tsx
-├── styles.module.css
-├── stories.tsx
-├── stories.module.css   (optional, for story layouts)
-└── test.tsx
+â”œâ”€â”€ index.tsx
+â”œâ”€â”€ styles.module.css
+â”œâ”€â”€ stories.tsx
+â”œâ”€â”€ stories.module.css   (optional, for story layouts)
+â””â”€â”€ test.tsx
 ```
 
 ### 2. Implementation checklist
@@ -55,18 +55,18 @@ src/components/MyComponent/
 - [ ] Type props with an `interface` that `extends` the relevant HTML attributes where appropriate
 - [ ] Export your props type: `export type { MyComponentProps }`
 - [ ] Set `displayName` on `forwardRef` components
-- [ ] Use tokens from `tokens.css` for all colors, spacing, radius, shadow, and transitions — no hardcoded values
+- [ ] Use tokens from `tokens.css` for all colors, spacing, radius, shadow, and transitions â€” no hardcoded values
 - [ ] Add all required ARIA attributes (`role`, `aria-label`, `aria-expanded`, `aria-controls`, etc.)
 - [ ] Handle keyboard interactions (`Enter`, `Space`, `Escape`, `Arrow` keys) where applicable
 - [ ] Use `useId` from `@utils/useId` to generate stable ARIA IDs (for `aria-labelledby`, `aria-describedby`)
-- [ ] Add `:focus-visible` outline styles — never remove `outline` without a replacement
+- [ ] Add `:focus-visible` outline styles â€” never remove `outline` without a replacement
 
 ### 3. Styles
 
 All styles must use CSS Modules (`styles.module.css`). Token usage:
 
 ```css
-/* ✅ Correct */
+/* âœ… Correct */
 .button {
   background: var(--color-brand-default);
   padding: var(--space-3) var(--space-6);
@@ -74,7 +74,7 @@ All styles must use CSS Modules (`styles.module.css`). Token usage:
   transition: background var(--transition-fast);
 }
 
-/* ❌ Incorrect */
+/* âŒ Incorrect */
 .button {
   background: #546ea9;
   padding: 12px 24px;
@@ -133,7 +133,7 @@ export type { MyComponentProps } from "@components/MyComponent";
 ## Design Token Rules
 
 1. **Never hardcode** colors, spacing, or radius values. Always reference a token.
-2. **Add tokens to `tokens.css`** if you need a new value — not inline styles.
+2. **Add tokens to `tokens.css`** if you need a new value â€” not inline styles.
 3. **Both themes** must be updated when adding a new semantic token (`:root` and `[data-theme="dark"]`).
 4. **Token naming convention**: `--category-variant-scale` (e.g., `--color-brand-600`, `--space-4`, `--radius-md`).
 
@@ -159,7 +159,7 @@ Before opening a PR:
 
 - [ ] `npm run type-check` passes with zero errors
 - [ ] `npm run lint` passes with zero warnings
-- [ ] `npm run test` passes — all tests green
+- [ ] `npm run test` passes â€” all tests green
 - [ ] `npm run build` succeeds
 - [ ] `npm run build-storybook` succeeds
 - [ ] New component is exported from `src/index.ts`
@@ -171,6 +171,7 @@ Before opening a PR:
 
 - Prefer `const` over `let`; avoid `var`
 - Use named exports, not default exports for components
-- Keep component files focused — no more than one exported component per `index.tsx`
-- Avoid `any` — use `unknown` and narrow the type
+- Keep component files focused â€” no more than one exported component per `index.tsx`
+- Avoid `any` â€” use `unknown` and narrow the type
 - Comments should explain *why*, not *what*. If the code is clear, no comment is needed.
+

@@ -1,6 +1,6 @@
-# MyUI — React Component Library
+# NEXUS — React Component Library
 
-A production-quality component library built to demonstrate senior-level frontend engineering: token-driven design, spring physics animations, full accessibility, and comprehensive test coverage. Showcases the kind of systematic thinking product teams at Airbnb, Linear, and Vercel expect on day one.
+NEXUS is a production-grade UI component library built with React 18, TypeScript 5, Framer Motion, and Storybook 7.
 
 [![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -11,7 +11,7 @@ A production-quality component library built to demonstrate senior-level fronten
 [![Tests](https://img.shields.io/badge/tests-53%20passing-brightgreen)](./coverage)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-**[→ Live Storybook](https://YOUR_STORYBOOK_URL)** &nbsp;|&nbsp; **[→ Portfolio](https://YOUR_PORTFOLIO_URL)** &nbsp;|&nbsp; **[→ GitHub](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)**
+**[â†’ Live Storybook](https://YOUR_STORYBOOK_URL)** &nbsp;|&nbsp; **[â†’ Portfolio](https://YOUR_PORTFOLIO_URL)** &nbsp;|&nbsp; **[â†’ GitHub](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)**
 
 > Replace the three links above with your real URLs after deploying to Vercel.
 
@@ -19,13 +19,13 @@ A production-quality component library built to demonstrate senior-level fronten
 
 ## Why this library?
 
-Most UI libraries give you unstyled primitives or opinionated theme lock-in. MyUI sits in the middle: fully styled, token-driven, and easy to fork and adapt. Every component is:
+Most UI libraries give you unstyled primitives or opinionated theme lock-in. NEXUS sits in the middle: fully styled, token-driven, and easy to fork and adapt. Every component is:
 
-- **Accessible by default** — ARIA roles, live regions, focus traps, keyboard navigation, WCAG AA contrast
-- **Animated with intent** — Framer Motion spring physics, not arbitrary `ease-in-out` durations
-- **Typed precisely** — strict TypeScript, all props and return types exported
-- **Tested thoroughly** — 53 unit tests across all 10 components using Vitest + React Testing Library
-- **Documented in Storybook** — autodocs, interactive controls, dark mode, a11y panel
+- **Accessible by default** â€” ARIA roles, live regions, focus traps, keyboard navigation, WCAG AA contrast
+- **Animated with intent** â€” Framer Motion spring physics, not arbitrary `ease-in-out` durations
+- **Typed precisely** â€” strict TypeScript, all props and return types exported
+- **Tested thoroughly** â€” 53 unit tests across all 10 components using Vitest + React Testing Library
+- **Documented in Storybook** â€” autodocs, interactive controls, dark mode, a11y panel
 
 ---
 
@@ -33,22 +33,22 @@ Most UI libraries give you unstyled primitives or opinionated theme lock-in. MyU
 
 | Component | Category | Highlights |
 |-----------|----------|------------|
-| **Button** | Core | 4 variants · 3 sizes · loading state · icon slots · `forwardRef` |
-| **Input** | Form | Floating label · prefix/suffix addons · validation states |
-| **Textarea** | Form | Auto-resize · character count · error state |
-| **Badge** | Display | 6 variants · dot indicator · removable pill |
-| **Avatar** | Display | Image · initials fallback · status ring · `AvatarGroup` |
-| **Card** | Layout | Compound API (`Card.Header`, `.Body`, `.Footer`, `.Image`) · 3 variants |
-| **Modal** | Overlay | Focus trap · body scroll lock · `createPortal` · 5 sizes |
-| **Toast** | Feedback | Context API (`useToast`) · progress bar · pause-on-hover · stacking |
-| **Tooltip** | Overlay | 4 placements · open delay · keyboard accessible |
-| **Toggle** | Form | Spring physics · 3 sizes · `role="switch"` · label slots |
+| **Button** | Core | 4 variants Â· 3 sizes Â· loading state Â· icon slots Â· `forwardRef` |
+| **Input** | Form | Floating label Â· prefix/suffix addons Â· validation states |
+| **Textarea** | Form | Auto-resize Â· character count Â· error state |
+| **Badge** | Display | 6 variants Â· dot indicator Â· removable pill |
+| **Avatar** | Display | Image Â· initials fallback Â· status ring Â· `AvatarGroup` |
+| **Card** | Layout | Compound API (`Card.Header`, `.Body`, `.Footer`, `.Image`) Â· 3 variants |
+| **Modal** | Overlay | Focus trap Â· body scroll lock Â· `createPortal` Â· 5 sizes |
+| **Toast** | Feedback | Context API (`useToast`) Â· progress bar Â· pause-on-hover Â· stacking |
+| **Tooltip** | Overlay | 4 placements Â· open delay Â· keyboard accessible |
+| **Toggle** | Form | Spring physics Â· 3 sizes Â· `role="switch"` Â· label slots |
 
 ---
 
 ## Design Tokens
 
-All visual properties — color, spacing, typography, radius, elevation, motion — are defined as CSS custom properties in [`src/styles/tokens.css`](./src/styles/tokens.css). Both light and dark themes are fully specified.
+All visual properties â€” color, spacing, typography, radius, elevation, motion â€” are defined as CSS custom properties in [`src/styles/tokens.css`](./src/styles/tokens.css). Both light and dark themes are fully specified.
 
 ```css
 /* Usage in any component */
@@ -68,26 +68,26 @@ Token categories: `color-brand`, `color-neutral`, `color-success/warning/danger/
 
 ```
 src/
-├── components/         # One folder per component
-│   └── Button/
-│       ├── index.tsx       # Component implementation
-│       ├── styles.module.css   # Scoped styles using tokens
-│       ├── stories.tsx     # Storybook stories (autodocs)
-│       ├── stories.module.css  # Story-specific layout styles
-│       └── test.tsx        # Vitest + RTL unit tests
-├── stories/
-│   └── Introduction.stories.mdx  # Storybook docs entry (tokens, inventory)
-├── styles/
-│   ├── tokens.css      # Full design token system (light + dark)
-│   └── global.css      # Reset and base styles
-├── utils/
-│   ├── cn.ts           # clsx-style class merging utility
-│   ├── useId.ts        # Stable ID generation for ARIA
-│   ├── useFocusTrap.ts # Focus trap for Modal and overlays
-│   └── useTooltip.ts   # Tooltip positioning logic
-├── index.ts            # Public API — all components and types re-exported
-├── App.tsx             # Portfolio landing page
-└── App.css             # Landing page styles
+â”œâ”€â”€ components/         # One folder per component
+â”‚   â””â”€â”€ Button/
+â”‚       â”œâ”€â”€ index.tsx       # Component implementation
+â”‚       â”œâ”€â”€ styles.module.css   # Scoped styles using tokens
+â”‚       â”œâ”€â”€ stories.tsx     # Storybook stories (autodocs)
+â”‚       â”œâ”€â”€ stories.module.css  # Story-specific layout styles
+â”‚       â””â”€â”€ test.tsx        # Vitest + RTL unit tests
+â”œâ”€â”€ stories/
+â”‚   â””â”€â”€ Introduction.stories.mdx  # Storybook docs entry (tokens, inventory)
+â”œâ”€â”€ styles/
+â”‚   â”œâ”€â”€ tokens.css      # Full design token system (light + dark)
+â”‚   â””â”€â”€ global.css      # Reset and base styles
+â”œâ”€â”€ utils/
+â”‚   â”œâ”€â”€ cn.ts           # clsx-style class merging utility
+â”‚   â”œâ”€â”€ useId.ts        # Stable ID generation for ARIA
+â”‚   â”œâ”€â”€ useFocusTrap.ts # Focus trap for Modal and overlays
+â”‚   â””â”€â”€ useTooltip.ts   # Tooltip positioning logic
+â”œâ”€â”€ index.ts            # Public API â€” all components and types re-exported
+â”œâ”€â”€ App.tsx             # Portfolio landing page
+â””â”€â”€ App.css             # Landing page styles
 ```
 
 ---
@@ -135,7 +135,7 @@ npm run build-storybook
 # Option A: CLI
 npx vercel storybook-static --prod
 
-# Option B: Dashboard → New Project → drag storybook-static/
+# Option B: Dashboard â†’ New Project â†’ drag storybook-static/
 ```
 
 4. After deploying, update the `STORYBOOK_URL` constant in `src/App.tsx` and the link in this README.
@@ -180,4 +180,5 @@ import {
 
 ## License
 
-MIT — see [LICENSE](./LICENSE)
+MIT â€” see [LICENSE](./LICENSE)
+
