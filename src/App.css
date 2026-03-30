@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap");
 
 *,
 *::before,
@@ -152,6 +152,9 @@ strong {
   transition: color 0.2s;
 }
 .nav-link-active {
+  color: #e8e8f0 !important;
+}
+.nav-active {
   color: #e8e8f0 !important;
 }
 .nav-cta {
@@ -537,7 +540,7 @@ strong {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 24px;
-  cursor: default;
+  cursor: pointer;
   transition: border-color 0.25s, transform 0.25s;
 }
 .comp-card::before {
@@ -623,6 +626,17 @@ strong {
   width: 56px;
   opacity: 0.7;
 }
+.cc-hint {
+  font-size: 11px;
+  color: var(--cc, #6C63FF);
+  opacity: 0;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+.comp-hov .cc-hint { opacity: 1; }
 .tone0 {
   --cc: #6c63ff;
 }
@@ -658,9 +672,30 @@ strong {
   transition: background 0.2s;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 .scard:hover {
   background: #111120;
+}
+.scard-arrow {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--sc, #6C63FF);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translate(-4px, 4px);
+}
+.scard:hover .scard-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.scard:hover .scard-name {
+  color: var(--sc, #6C63FF);
+  transition: color 0.2s;
 }
 .scard-dot {
   width: 8px;
@@ -784,6 +819,19 @@ strong {
     transform: translateY(0);
   }
 }
+
+@keyframes heroEntrance {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * {
+  animation: heroEntrance 0.7s ease both;
+}
+.hero-inner > *:nth-child(1) { animation-delay: 0s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.1s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.2s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.3s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.4s; }
 
 @media (max-width: 768px) {
   .nav-inner {

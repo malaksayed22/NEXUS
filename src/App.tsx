@@ -1,68 +1,36 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import type React from "react";
 import "./App.css";
 
-const components = [
-  {
-    name: "Button",
-    desc: "4 variants · 3 sizes · loading · icons",
-    tag: "Core",
-    emoji: "⚡",
-  },
-  {
-    name: "Input",
-    desc: "Float label · addons · validation states",
-    tag: "Form",
-    emoji: "✏️",
-  },
-  {
-    name: "Textarea",
-    desc: "Auto-resize · char count · error state",
-    tag: "Form",
-    emoji: "📝",
-  },
-  {
-    name: "Badge",
-    desc: "6 variants · dot · removable pill",
-    tag: "Display",
-    emoji: "🏷️",
-  },
-  {
-    name: "Avatar",
-    desc: "Image · initials · status · group stack",
-    tag: "Display",
-    emoji: "👤",
-  },
-  {
-    name: "Card",
-    desc: "Elevated · outlined · compound API",
-    tag: "Layout",
-    emoji: "🃏",
-  },
-  {
-    name: "Modal",
-    desc: "Focus trap · ARIA · portal · 5 sizes",
-    tag: "Overlay",
-    emoji: "🪟",
-  },
-  {
-    name: "Toast",
-    desc: "Context API · progress bar · stacking",
-    tag: "Feedback",
-    emoji: "🔔",
-  },
-  {
-    name: "Tooltip",
-    desc: "4 placements · delay · keyboard a11y",
-    tag: "Overlay",
-    emoji: "💬",
-  },
-  {
-    name: "Toggle",
-    desc: "Spring physics · 3 sizes · label slots",
-    tag: "Form",
-    emoji: "🔘",
-  },
+const STORYBOOK_URL = 'http://localhost:6006';
+// TODO: replace with your deployed Storybook URL after deploying to Vercel
+
+type StackItem = {
+  n: string;
+  d: string;
+  c: string;
+  url: string;
+};
+
+type ComponentItem = {
+  name: string;
+  desc: string;
+  tag: string;
+  emoji: string;
+  storybookPath: string;
+};
+
+const components: ComponentItem[] = [
+  { name: 'Button',   desc: '4 variants · 3 sizes · loading · icons',        tag: 'Core',     emoji: '⚡', storybookPath: '?path=/docs/components-button--docs'   },
+  { name: 'Input',    desc: 'Float label · addons · validation states',       tag: 'Form',     emoji: '✏️', storybookPath: '?path=/docs/components-input--docs'    },
+  { name: 'Textarea', desc: 'Auto-resize · char count · error state',         tag: 'Form',     emoji: '📝', storybookPath: '?path=/docs/components-textarea--docs' },
+  { name: 'Badge',    desc: '6 variants · dot · removable pill',              tag: 'Display',  emoji: '🏷️', storybookPath: '?path=/docs/components-badge--docs'    },
+  { name: 'Avatar',   desc: 'Image · initials · status · group stack',        tag: 'Display',  emoji: '👤', storybookPath: '?path=/docs/components-avatar--docs'   },
+  { name: 'Card',     desc: 'Elevated · outlined · compound API',             tag: 'Layout',   emoji: '🃏', storybookPath: '?path=/docs/components-card--docs'     },
+  { name: 'Modal',    desc: 'Focus trap · ARIA · portal · 5 sizes',           tag: 'Overlay',  emoji: '🪟', storybookPath: '?path=/docs/components-modal--docs'    },
+  { name: 'Toast',    desc: 'Context API · progress bar · stacking',          tag: 'Feedback', emoji: '🔔', storybookPath: '?path=/docs/components-toast--docs'    },
+  { name: 'Tooltip',  desc: '4 placements · delay · keyboard a11y',           tag: 'Overlay',  emoji: '💬', storybookPath: '?path=/docs/components-tooltip--docs'  },
+  { name: 'Toggle',   desc: 'Spring physics · 3 sizes · label slots',         tag: 'Form',     emoji: '🔘', storybookPath: '?path=/docs/components-toggle--docs'   },
 ];
 
 export default function App() {
@@ -75,18 +43,18 @@ export default function App() {
     const onScroll = () => {
       setScrollY(window.scrollY);
 
-      const sections = ["components", "stack"];
+      const sections = ['components', 'stack'];
+      let found = '';
       for (const id of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
         const rect = el.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) {
-          setActiveSection(id);
+        if (rect.top <= 140 && rect.bottom >= 140) {
+          found = id;
           break;
-        } else if (window.scrollY < 200) {
-          setActiveSection("");
         }
       }
+      setActiveSection(found);
     };
     const onMouse = (e: MouseEvent) =>
       setMouse({
@@ -108,6 +76,10 @@ export default function App() {
   const motionClassY =
     py > 10 ? "motion-y-pos" : py < -10 ? "motion-y-neg" : "motion-y-mid";
 
+  const openComponent = (path: string) => {
+    window.open(`${STORYBOOK_URL}${path}`, '_blank', 'noopener,noreferrer');
+  };
+
   const scrollTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -116,6 +88,15 @@ export default function App() {
     const top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: "smooth" });
   };
+
+  const stackItems: StackItem[] = [
+    { n: 'React 18',      d: 'Hooks · forwardRef · portals · concurrent',  c: '#61DAFB', url: 'https://react.dev' },
+    { n: 'TypeScript 5',  d: 'Strict mode · fully typed props & utils',     c: '#3178C6', url: 'https://www.typescriptlang.org/docs' },
+    { n: 'Framer Motion', d: 'Springs · layout anim · AnimatePresence',     c: '#BB4BFF', url: 'https://www.framer.com/motion' },
+    { n: 'Storybook 7',   d: 'Autodocs · controls · MDX · dark mode',       c: '#FF4785', url: 'https://storybook.js.org/docs' },
+    { n: 'Vitest',        d: 'Unit tests · RTL · coverage reports',         c: '#6E9F18', url: 'https://vitest.dev' },
+    { n: 'CSS Modules',   d: 'Scoped styles · tokens · zero runtime',       c: '#FFB347', url: 'https://github.com/css-modules/css-modules' },
+  ];
 
   return (
     <div className={`root ${motionClassX} ${motionClassY}`}>
@@ -144,7 +125,7 @@ export default function App() {
               aria-label="Navigate to components section"
               className={
                 activeSection === "components"
-                  ? "nav-link nav-link-active"
+                  ? "nav-link nav-active"
                   : "nav-link"
               }
             >
@@ -156,17 +137,16 @@ export default function App() {
               aria-label="Navigate to stack section"
               className={
                 activeSection === "stack"
-                  ? "nav-link nav-link-active"
+                  ? "nav-link nav-active"
                   : "nav-link"
               }
             >
               Stack
             </a>
-            {/* TODO: replace with deployed Storybook URL */}
             <a
-              href="http://localhost:6006"
+              href={`${STORYBOOK_URL}`}
               className="nav-cta"
-              aria-label="Open Storybook in new tab"
+              aria-label="Open Storybook"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -196,11 +176,11 @@ export default function App() {
           </p>
 
           <div className="hero-actions">
-            {/* TODO: replace with deployed Storybook URL */}
+            {/* TODO: replace STORYBOOK_URL with your deployed Vercel URL */}
             <a
-              href="http://localhost:6006"
+              href={`${STORYBOOK_URL}`}
               className="btn-solid"
-              aria-label="Open Storybook documentation in new tab"
+              aria-label="Open MyUI Storybook documentation in a new tab"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -216,9 +196,9 @@ export default function App() {
             </a>
             {/* TODO: replace with your real GitHub repo URL */}
             <a
-              href="https://github.com/YOUR_USERNAME/your-repo-name"
+              href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME"
               className="btn-outline"
-              aria-label="View source code on GitHub"
+              aria-label="View MyUI source code on GitHub"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -301,8 +281,10 @@ export default function App() {
                     hovered === c.name ? "comp-hov" : ""
                   }`}
                   tabIndex={0}
-                  role="article"
-                  aria-label={`${c.name} component — ${c.desc}`}
+                  role="button"
+                  aria-label={`View ${c.name} component in Storybook`}
+                  onClick={() => openComponent(c.storybookPath)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openComponent(c.storybookPath); } }}
                   onMouseEnter={() => setHovered(c.name)}
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(c.name)}
@@ -316,6 +298,7 @@ export default function App() {
                   <div className="cc-name">{c.name}</div>
                   <div className="cc-desc">{c.desc}</div>
                   <div className="cc-rule" />
+                  <div className="cc-hint">View in Storybook ↗</div>
                 </div>
               );
             })}
@@ -333,43 +316,21 @@ export default function App() {
             <span className="dim">Zero shortcuts.</span>
           </h2>
           <div className="stack-grid">
-            {[
-              {
-                n: "React 18",
-                d: "Hooks · forwardRef · portals · concurrent",
-                c: "#61DAFB",
-              },
-              {
-                n: "TypeScript 5",
-                d: "Strict mode · fully typed props & utils",
-                c: "#3178C6",
-              },
-              {
-                n: "Framer Motion",
-                d: "Springs · layout anim · AnimatePresence",
-                c: "#BB4BFF",
-              },
-              {
-                n: "Storybook 7",
-                d: "Autodocs · controls · MDX · dark mode",
-                c: "#FF4785",
-              },
-              {
-                n: "Vitest",
-                d: "Unit tests · RTL · coverage reports",
-                c: "#6E9F18",
-              },
-              {
-                n: "CSS Modules",
-                d: "Scoped styles · tokens · zero runtime",
-                c: "#FFB347",
-              },
-            ].map((s, idx) => (
-              <div className={`scard st${idx % 6}`} key={s.n}>
+            {stackItems.map((s, idx) => (
+              <a
+                className={`scard st${idx % 6}`}
+                key={s.n}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Learn more about ${s.n}`}
+                style={{ '--sc': s.c } as React.CSSProperties}
+              >
                 <div className="scard-dot" />
                 <div className="scard-name">{s.n}</div>
                 <div className="scard-detail">{s.d}</div>
-              </div>
+                <span className="scard-arrow">↗</span>
+              </a>
             ))}
           </div>
         </div>
@@ -389,11 +350,11 @@ export default function App() {
             Click through variants, toggle props, switch themes — all
             interactive, all live.
           </p>
-          {/* TODO: replace with deployed Storybook URL */}
+          {/* TODO: replace STORYBOOK_URL with your deployed Vercel URL */}
           <a
-            href="http://localhost:6006"
+            href={`${STORYBOOK_URL}`}
             className="btn-solid btn-big"
-            aria-label="Open Storybook documentation in new tab"
+            aria-label="Launch MyUI Storybook in a new tab"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -412,12 +373,20 @@ export default function App() {
 
       <footer className="footer">
         <span>
-          Built by <strong>Your Name</strong>
+          Built by{' '}
+          {/* TODO: replace with your personal portfolio URL */}
+          <a
+            href="https://YOUR_PORTFOLIO_URL"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>Your Name</strong>
+          </a>
         </span>
         <span className="footer-mid">React · TypeScript · Storybook</span>
         {/* TODO: replace with your real GitHub repo URL */}
         <a
-          href="https://github.com/YOUR_USERNAME/your-repo-name"
+          href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME"
           aria-label="View source code on GitHub"
           target="_blank"
           rel="noopener noreferrer"
